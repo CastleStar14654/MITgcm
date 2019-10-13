@@ -1,4 +1,6 @@
 # CVS default ignores begin
+*.sublime-project
+*.sublime-workspace
 *~
 \#*
 .#*
