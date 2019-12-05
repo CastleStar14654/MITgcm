@@ -37,11 +37,11 @@
  &PARM03
  startTime=0.,
  endTime=12000.,
- deltaT=1200.,
+ deltaT=600.,
  pChkptFreq=622080000.,
  chkptFreq=155520000.,
  dumpFreq=31104000.,
- monitorFreq=1200.,
+ monitorFreq=600.,
  monitorSelect=2,
  tauThetaClimRelax=2592000.,
 #-for longer run (100 yrs)

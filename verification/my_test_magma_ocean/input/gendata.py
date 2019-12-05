@@ -50,12 +50,14 @@ write(height, 'bathy.bin')
 # =============================================================
 # Surface temperature relaxation
 # ------ default temperature t_0 = T_0-KELVIN (s0*cos(x)*cos(y) = sigma*T_0**4), x & y in degree ----------
+rho = 2670 # kg/m^3
+c_p = 1.3e3 # J/kg*K
 xs = np.arange(xo+dx/2, xo+dx/2 + dx*nx, dx).reshape((1,-1))
 ys = np.arange(yo+dy/2, yo+dy/2 + dy*ny, dy).reshape((-1,1))
 T_0 = (s0*np.cos(xs*pi/180)*np.cos(ys*pi/180)/sigma)**.25
 write(T_0 - KELVIN, 'SST_relax.bin')
-# ------ reciprocal of surface relaxation lambda_t = 4*sigma*T_0**3 ------
-lambda_t =  4*sigma*T_0**3
+# ------ reciprocal of surface relaxation lambda_t = 4*sigma*T_0**3 / rho / c_p ------
+lambda_t =  4*sigma*T_0**3 /rho/c_p
 write(lambda_t, 'SST_lambda.bin')
 
 # =============================================================
@@ -72,7 +74,6 @@ We assume A_molecure = eta/rho, let eddy viscosity A_r = A_molecure * 100, A_h =
 hr_ratio = 1e8 # A_h/A_r
 a = 1e7 # m, planet radius
 g = 24 # m/s^2
-rho = 2670 # kg/m^3
 para = {'A': -4.3, 'B': 3689, 'T': 763, 'C': 44} # temperature in K, pressure in GPa
 # !!!!!!! Z, Y, X, L NOW !!!!!!!!
 zs = []
