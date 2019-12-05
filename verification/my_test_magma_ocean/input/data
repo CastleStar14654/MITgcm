@@ -36,14 +36,14 @@
 # Time stepping parameters
  &PARM03
  startTime=0.,
- endTime=6000.,
+ endTime=31104000., ! 1 yr
  deltaT=300.,
- pChkptFreq=622080000.,
- chkptFreq=155520000.,
- dumpFreq=31104000.,
- monitorFreq=300.,
- monitorSelect=2,
- tauThetaClimRelax=2592000.,
+ pChkptFreq=31104000., ! 1 yr
+ chkptFreq=15552000., ! .5 yr
+ dumpFreq=7776000., ! 3 mth
+ monitorFreq=2592000., ! 1 mth
+ monitorSelect=3,
+ ! tauThetaClimRelax=2592000.,
 #-for longer run (100 yrs)
 # endTime = 3110400000.,
 # monitorFreq=2592000.,
