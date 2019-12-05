@@ -10,7 +10,7 @@
  ivdc_kappa=1.,
  implicitDiffusion=.TRUE.,
  eosType='LINEAR',
- tRef=20*1727,
+ tRef=20*1727.,
 # Celsius here
  tAlpha=7.08E-5,
  sBeta=0.,
@@ -52,7 +52,7 @@
 # Gridding parameters
  &PARM04
  usingSphericalPolarGrid=.TRUE.,
- rSphere=1.E+07.
+ rSphere=1.E+07,
  delX=85*2.,
  delY=84*2.,
  xgOrigin=-85.,
