@@ -99,6 +99,7 @@ for numy in range(ny):
 temprature = np.sum(coef*np.exp(-(ls*(ls+1))**.5 * hr_ratio**.5 *zs.reshape((-1,1,1,1))/a)*P_ls,
                     axis=3)
 temprature = gaussian_filter(temprature, 1, mode='nearest')
+write(temprature - KELVIN, 'hydrogTheta.bin')
 
 
 eta = 10**(para['A']
