@@ -115,5 +115,5 @@ for value in A_r:
 file.close()
 # -------------- A_h -----------------
 A_h = A_molecure*100*hr_ratio
-A_h[A_h > 1e10] = 1e10
+A_h[A_h > 3e5] = 3e5
 write(A_h, 'viscAhfile.bin')
