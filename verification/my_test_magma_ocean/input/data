@@ -33,9 +33,9 @@
 ! Time stepping parameters
  &PARM03
  startTime=0.,
- endTime=622080000., ! 20 yr
+ endTime=31104000., ! 1 yr
  deltaT=300.,
- pChkptFreq=62208000., ! 2 yr
+ pChkptFreq=31104000., ! 1 yr
  chkptFreq=15552000., ! .5 yr
  dumpFreq=7776000., ! 3 mth
  monitorFreq=2592000., ! 1 mth

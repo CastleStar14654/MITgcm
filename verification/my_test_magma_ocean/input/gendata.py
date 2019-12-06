@@ -55,9 +55,9 @@ c_p = 1.3e3 # J/kg*K
 xs = np.arange(xo+dx/2, xo+dx/2 + dx*nx, dx).reshape((1,-1))
 ys = np.arange(yo+dy/2, yo+dy/2 + dy*ny, dy).reshape((-1,1))
 T_0 = (s0*np.cos(xs*pi/180)*np.cos(ys*pi/180)/sigma)**.25
-write(T_0 - KELVIN, 'SST_relax.bin')
-# ------ reciprocal of surface relaxation lambda_t = 4*sigma*T_0**3 / rho / c_p ------
-lambda_t =  4*sigma*T_0**3 /rho/c_p
+# write(T_0 - KELVIN, 'SST_relax.bin')
+# ------ reciprocal of surface relaxation lambda_t = 4*sigma*T_0**3 / rho / c_p /delR[0] ------
+lambda_t =  4*sigma*T_0**3 /rho/c_p/delR[0]
 write(lambda_t, 'SST_lambda.bin')
 
 # =============================================================
@@ -100,8 +100,9 @@ for numy in range(ny):
 temprature = np.sum(coef*np.exp(-(ls*(ls+1))**.5 * hr_ratio**.5 *zs.reshape((-1,1,1,1))/a)*P_ls,
                     axis=3)
 temprature = gaussian_filter(temprature, 1, mode='nearest')
-write(temprature - 41.5*pressure - KELVIN, 'hydrogTheta.bin')
-
+temprature_w = temprature - 41.5*pressure - KELVIN
+write(temprature_w, 'hydrogTheta.bin')
+write(temprature_w[0], 'SST_relax.bin')
 
 eta = 10**(para['A']
            + (para['B'] + para['C']*pressure) / (temprature - para['T'])
