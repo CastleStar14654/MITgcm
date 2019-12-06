@@ -1,7 +1,7 @@
-# Model parameters
-# Continuous equation parameters
+! Model parameters
+! Continuous equation parameters
  &PARM01
-# viscAh=5000.,
+! viscAh=5000.,
  viscArNr=1.3E-03,1.4E-03,1.6E-03,1.9E-03,2.5E-03,3.4E-03,5.1E-03,8.3E-03,1.5E-02,2.8E-02,5.4E-02,1.1E-01,2.2E-01,4.4E-01,9.0E-01,1.8E+00,1.8E+00,1.8E+00,1.8E+00,1.8E+00,
  no_slip_sides=.TRUE.,
  no_slip_bottom=.TRUE.,
@@ -10,46 +10,39 @@
  ivdc_kappa=1.,
  implicitDiffusion=.TRUE.,
  eosType='LINEAR',
- tRef=20*1727.,
-# Celsius here
+ tRef=20*1727., ! Celsius here
  tAlpha=7.08E-5,
  sBeta=0.,
  rhoNil=2670.,
- gravity=24.,
-# Leger (2011)
+ gravity=24., ! Leger (2011)
  rigidLid=.FALSE.,
  implicitFreeSurface=.TRUE.,
  exactConserv=.TRUE.,
  saltStepping=.FALSE.,
-# globalFiles=.TRUE.,
- rotationPeriod=7.3549E+04,
-# Leger (2011)
+! globalFiles=.TRUE.,
+ rotationPeriod=7.3549E+04, ! Leger (2011)
  HeatCapacity_Cp=1.3E+03,
  &
 
-# Elliptic solver parameters
+! Elliptic solver parameters
  &PARM02
  cg2dTargetResidual=1.E-7,
  cg2dMaxIters=1000,
  &
 
-# Time stepping parameters
+! Time stepping parameters
  &PARM03
  startTime=0.,
- endTime=31104000., ! 1 yr
+ endTime=622080000., ! 20 yr
  deltaT=300.,
- pChkptFreq=31104000., ! 1 yr
+ pChkptFreq=62208000., ! 2 yr
  chkptFreq=15552000., ! .5 yr
  dumpFreq=7776000., ! 3 mth
  monitorFreq=2592000., ! 1 mth
  monitorSelect=3,
- ! tauThetaClimRelax=2592000.,
-#-for longer run (100 yrs)
-# endTime = 3110400000.,
-# monitorFreq=2592000.,
  &
 
-# Gridding parameters
+! Gridding parameters
  &PARM04
  usingSphericalPolarGrid=.TRUE.,
  rSphere=1.E+07,
@@ -62,7 +55,6 @@
 
  &PARM05
  bathyFile='bathy.bin',
-#zonalWindFile='windx_cosy.bin',
  thetaClimFile='SST_relax.bin',
  hydrogThetaFile='hydrogTheta.bin',
  lambdaThetaFile='SST_lambda.bin',
