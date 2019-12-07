@@ -33,14 +33,14 @@
 ! Time stepping parameters
  &PARM03
  startTime=0.,
- endTime=31104000., ! 1 yr
+ endTime=311040000., ! 10 yr
  deltaT=300.,
- pChkptFreq=31104000., ! 1 yr
- chkptFreq=15552000., ! .5 yr
+ pChkptFreq=62208000., ! 2 yr
+ chkptFreq=31104000., ! 1 yr
  dumpFreq=7776000., ! 3 mth
  monitorFreq=2592000., ! 1 mth
  monitorSelect=3,
- tauThetaClimRelax=86400., ! 1 day
+ tauThetaClimRelax=864000., ! 10 day
  &
 
 ! Gridding parameters
