@@ -40,6 +40,7 @@
  dumpFreq=7776000., ! 3 mth
  monitorFreq=2592000., ! 1 mth
  monitorSelect=3,
+ tauThetaClimRelax=86400., ! 1 day
  &
 
 ! Gridding parameters
@@ -57,7 +58,7 @@
  bathyFile='bathy.bin',
  thetaClimFile='SST_relax.bin',
  hydrogThetaFile='hydrogTheta.bin',
- lambdaThetaFile='SST_lambda.bin',
+ ! lambdaThetaFile='SST_lambda.bin',
  viscAhDfile='viscAhfile.bin',
  viscAhZfile='viscAhfile.bin',
  &
