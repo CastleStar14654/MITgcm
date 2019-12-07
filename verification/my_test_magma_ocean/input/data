@@ -58,7 +58,7 @@
  bathyFile='bathy.bin',
  thetaClimFile='SST_relax.bin',
  hydrogThetaFile='hydrogTheta.bin',
- ! lambdaThetaFile='SST_lambda.bin',
+ lambdaThetaFile='SST_lambda.bin',
  viscAhDfile='viscAhfile.bin',
  viscAhZfile='viscAhfile.bin',
  &
