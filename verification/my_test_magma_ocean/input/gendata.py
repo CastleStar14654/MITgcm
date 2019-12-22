@@ -27,10 +27,7 @@ def write(array, file_name, byte_order=BYTE_ORDER, format=FORMAT):
         file.write(byte)
     file.close()
 
-delR = (10, 10, 10, 20, 20,
-        30, 30, 40, 40, 50,
-        50, 60, 60, 70, 70,
-        80, 80, 90, 100, 100)
+delR = (5.,5.,5.,5.,5.,5.,5.,5.,5.,5.,10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,)
 
 Ho = np.sum(delR);  #depth of ocean
 nx=85;  # gridpints in x
@@ -38,14 +35,6 @@ ny=84;  # gridpints in y
 xo=-85; yo=-84;  # degree, origin in x,y for ocean
 dx=2;dy=2;  # degree, grid spacing in x, y
 s0 = 2.1e6 # W/m^2, = sigma*T_max**2, T_max = 2500K
-
-# =============================================================
-# Flat bottom at z=-Ho
-height = -Ho*np.ones((ny, nx))
-# create a border ring of walls around edge of domain
-height[0,:] = 0; height[-1,:] = 0
-height[:,0] = 0; height[:,-1] = 0
-write(height, 'bathy.bin')
 
 # =============================================================
 # Surface temperature relaxation
@@ -59,6 +48,15 @@ T_0 = (s0*np.cos(xs*pi/180)*np.cos(ys*pi/180)/sigma)**.25
 # ------ reciprocal of surface relaxation lambda_t = 4*sigma*T_0**3 / rho / c_p /delR[0] ------
 lambda_t =  4*sigma*T_0**3 /rho/c_p/delR[0]
 write(lambda_t, 'SST_lambda.bin')
+
+# =============================================================
+# Flat bottom at z=-Ho
+height = -Ho*np.ones((ny, nx))
+# create a border ring of walls around edge of domain
+# height[0,:] = 0; height[-1,:] = 0
+# height[:,0] = 0; height[:,-1] = 0
+height[T_0<1600] = 0
+write(height, 'bathy.bin')
 
 # =============================================================
 '''viscosity (according to Liebske et al. (2005))
@@ -86,7 +84,7 @@ xs = xs.reshape((1,1,-1))
 
 pressure = rho*g*zs/1e9 # GPa
 
-coef = np.load('legendre_coef').reshape((1,1,1,-1)) # temperature coefficient, in K
+coef = np.load('legendre_coef', allow_pickle=True).reshape((1,1,1,-1)) # temperature coefficient, in K
 ls = np.arange(coef.size).reshape((1,1,1,-1))
 # temperature = SUM_l coef[0,0,0,l]*exp( -(l*(l+1))**.5 * hr_ratio**.5 *z/a)*P_l(cos(x)*cos(y))
 # x, y in degree
@@ -97,7 +95,10 @@ for numy in range(ny):
                                 np.cos(ys[0,numy,0]*pi/180)
                                     *np.cos(xs[0,0,numx]*pi/180)
                                 )[0]
-temprature = np.sum(coef*np.exp(-(ls*(ls+1))**.5 * hr_ratio**.5 *zs.reshape((-1,1,1,1))/a)*P_ls,
+temprature = np.sum(coef*np.exp(-(ls*(ls+1))**.5
+                                * hr_ratio**.5
+                                * zs.reshape((-1,1,1,1))/a
+                                )*P_ls,
                     axis=3)
 temprature = gaussian_filter(temprature, 1, mode='nearest')
 temprature_w = temprature - 41.5*pressure - KELVIN
@@ -108,13 +109,14 @@ eta = 10**(para['A']
            + (para['B'] + para['C']*pressure) / (temprature - para['T'])
            )
 A_molecure = eta/rho
-# -------------- A_r, REMEMBER TO COPY DATA IN 'ArNr' TO 'data' -----------------
-A_r = np.average(A_molecure[:,10:-11,10:-11]*100, axis=(1,2))
-file = open('ArNr', 'w')
-for value in A_r:
-    print(value, file=file)
-file.close()
+# # -------------- A_r, REMEMBER TO COPY DATA IN 'ArNr' TO 'data' -----------------
+# A_r = np.average(A_molecure[:,10:-11,10:-11]*100, axis=(1,2))
+# file = open('ArNr', 'w')
+# for value in A_r:
+#     print(value, file=file)
+# file.close()
 # -------------- A_h -----------------
 A_h = A_molecure*100*hr_ratio
-A_h[A_h > 3e5] = 3e5
-write(A_h, 'viscAhfile.bin')
+print(np.max(A_h), np.min(A_h), np.average(A_h))
+# A_h[A_h > 3e5] = 3e5
+# write(A_h, 'viscAhfile.bin')

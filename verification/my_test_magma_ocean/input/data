@@ -1,8 +1,9 @@
 ! Model parameters
 ! Continuous equation parameters
  &PARM01
-! viscAh=5000.,
- viscArNr=1.3E-03,1.4E-03,1.6E-03,1.9E-03,2.5E-03,3.4E-03,5.1E-03,8.3E-03,1.5E-02,2.8E-02,5.4E-02,1.1E-01,2.2E-01,4.4E-01,9.0E-01,1.8E+00,1.8E+00,1.8E+00,1.8E+00,1.8E+00,
+ viscAh=3.0E05,
+ viscAr=3.0E-02,
+ ! viscArNr=1.3E-03,1.4E-03,1.6E-03,1.9E-03,2.5E-03,3.4E-03,5.1E-03,8.3E-03,1.5E-02,2.8E-02,5.4E-02,1.1E-01,2.2E-01,4.4E-01,9.0E-01,1.8E+00,1.8E+00,1.8E+00,1.8E+00,1.8E+00,
  no_slip_sides=.TRUE.,
  no_slip_bottom=.TRUE.,
  diffKhT=5000.,
@@ -51,7 +52,7 @@
  delY=84*2.,
  xgOrigin=-85.,
  ygOrigin=-84.,
- delR=10.,10.,10.,20.,20.,30.,30.,40.,40.,50.,50.,60.,60.,70.,70.,80.,80.,90.,100.,100.,
+ delR=5.,5.,5.,5.,5.,5.,5.,5.,5.,5.,10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,
  &
 
  &PARM05
@@ -59,6 +60,6 @@
  thetaClimFile='SST_relax.bin',
  hydrogThetaFile='hydrogTheta.bin',
  lambdaThetaFile='SST_lambda.bin',
- viscAhDfile='viscAhfile.bin',
- viscAhZfile='viscAhfile.bin',
+ ! viscAhDfile='viscAhfile.bin',
+ ! viscAhZfile='viscAhfile.bin',
  &
