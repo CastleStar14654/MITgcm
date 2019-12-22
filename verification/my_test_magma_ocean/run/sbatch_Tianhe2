@@ -1,6 +1,6 @@
 #!/WORK/app/osenv/ln1/bin/bash
 
-yhrun -N 1 -n 20 -p work ./mitgcmuv > slurm.out
+yhrun -N 1 -n 20 -p work ./mitgcmuv
 
 
 
