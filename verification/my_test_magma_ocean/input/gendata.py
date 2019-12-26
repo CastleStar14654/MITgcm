@@ -95,9 +95,13 @@ for numy in range(ny):
                                 np.cos(ys[0,numy,0]*pi/180)
                                     *np.cos(xs[0,0,numx]*pi/180)
                                 )[0]
+#####################################################################
+##                        HAVE ADDED A FACTOR                      ##
+#####################################################################
+FACTOR=10
 temprature = np.sum(coef*np.exp(-(ls*(ls+1))**.5
                                 * hr_ratio**.5
-                                * zs.reshape((-1,1,1,1))/a
+                                * FACTOR*zs.reshape((-1,1,1,1))/a
                                 )*P_ls,
                     axis=3)
 temprature = gaussian_filter(temprature, 1, mode='nearest')
