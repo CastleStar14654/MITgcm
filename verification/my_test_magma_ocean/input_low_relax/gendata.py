@@ -111,8 +111,8 @@ write(temperature_w, 'hydrogTheta.bin')
 write(temperature_w[0], 'SST_relax.bin')
 
 # ------ reciprocal of surface relaxation lambda_t = 4*sigma*T_0**3 / rho / c_p /delR[0] ------
-lambda_t =  4*sigma*temperature[0]**3 /rho/c_p/delR[0]
-# lambda_t =  4*sigma*temperature[0]**3 /rho/c_p/sum(delR)
+# lambda_t =  4*sigma*temperature[0]**3 /rho/c_p/delR[0]
+lambda_t =  4*sigma*temperature[0]**3 /rho/c_p/sum(delR)
 write(lambda_t, 'SST_lambda.bin')
 # print(1/np.max(lambda_t), 1/np.min(lambda_t), 1/np.average(lambda_t))
 

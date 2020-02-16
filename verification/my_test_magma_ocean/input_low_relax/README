@@ -1,0 +1,8 @@
+Experimentation low relax on 16th Feb 2020
+================================
+1. change the ocean depth from 150m to ~500m
+    --- the experiment last time indicates that 150m is too shallow
+2. change the ocean width from 85W-85E to 128W-128E
+    --- the experiment last time indicates a very strong boundary flow.
+3. change the radiation relaxation time.
+    --- so that the surface temperature distribution might be different.

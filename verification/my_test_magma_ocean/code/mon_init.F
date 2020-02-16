@@ -39,7 +39,7 @@ C     Internal parameter for continuing when monitor_solution would
 C     otherwise decide to stop the code.
 c     mon_overrideStop=.FALSE.
       monSolutionMaxRange = 1. _d +4
-      IF ( fluidIsWater ) monSolutionMaxRange = 2. _d +3
+      IF ( fluidIsWater ) monSolutionMaxRange = 3. _d +3
 
       mon_output_AM = fluidIsAir .AND. useCoriolis
      &                           .AND. selectCoriMap.GE.2
