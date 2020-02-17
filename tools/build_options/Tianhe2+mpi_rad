@@ -21,7 +21,7 @@
 FC=mpif90
 F90C=mpif90
 CC=mpicc
-F90FIXEDFORMAT='-fixed -Tf' 
+F90FIXEDFORMAT='-fixed -Tf'
 DEFINES='-DWORDLENGTH=4'
 LINK='mpif90'
 CPP='cpp  -traditional -P'
@@ -30,9 +30,9 @@ EXTENDED_SRC_FLAG='-132'
 NOOPTFLAGS='-O0 -g -m64 -fPIC'
 NOOPTFILES=''
 
-INCLUDEDIRS='/opt/scyld/openmpi/1.6.5/intel/include/'
+# INCLUDEDIRS='/opt/scyld/openmpi/1.6.5/intel/include/'
 #INCLUDES='-I/usr/include/openmpi -pthread -I/usr/lib64/OMPI/intel'
-LIBS='-L/opt/scyld/openmpi/1.6.5/intel/lib/'
+# LIBS='-L/opt/scyld/openmpi/1.6.5/intel/lib/'
 # -lmpi_f77 -lmpi -lopen-rte -lopen-pal -libverbs -ldat -lrt -ltorque -lnuma -ldl -lnsl -lutil'
 
 if test "x$DEVEL" != x ; then
