@@ -32,9 +32,9 @@ NOOPTFLAGS='-O0 -g -m64 -fPIC'
 NOOPTFILES=''
 GET_FC_VERSION="--version"
 
-INCLUDEDIRS='/opt/scyld/openmpi/1.6.5/intel/include/'
+# INCLUDEDIRS='/opt/scyld/openmpi/1.6.5/intel/include/'
 #INCLUDES='-I/usr/include/openmpi -pthread -I/usr/lib64/OMPI/intel'
-LIBS='-L/opt/scyld/openmpi/1.6.5/intel/lib/'
+# LIBS='-L/opt/scyld/openmpi/1.6.5/intel/lib/'
 # -lmpi_f77 -lmpi -lopen-rte -lopen-pal -libverbs -ldat -lrt -ltorque -lnuma -ldl -lnsl -lutil'
 
 if test "x$DEVEL" != x ; then
